@@ -1,0 +1,13 @@
+Available APIs for us to consider using:
+
+Name: Google Directions API
+Description: Calculates the directions between a given two places
+Link: https://developers.google.com/maps/documentation/directions/start
+
+Name: Distance Matrix API
+Description: Determines travel distance and times for a matrix of origins and destinations
+Link: https://developers.google.com/maps/documentation/distance-matrix/intro
+
+Name: Open Source Routing Machine
+Description: Calculates the directions between a given two locations
+Link: http://project-osrm.org/docs/v5.15.2/api/?language=cURL#nearest-service
