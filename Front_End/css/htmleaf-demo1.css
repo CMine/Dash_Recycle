@@ -50,7 +50,7 @@ body{
 	color: #D5D6E2;
 	font-weight: 500;
 	font-size: 1.05em;
-	font-family: "Microsoft YaHei","宋体","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif, FreeSans, Arimo;
+	font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
 }
 a{ color: rgba(255, 255, 255, 0.6);outline: none;text-decoration: none;-webkit-transition: 0.2s;transition: 0.2s;}
 a:hover,a:focus{color:#74777b;text-decoration: none;}
@@ -84,10 +84,8 @@ a:hover,a:focus{color:#74777b;text-decoration: none;}
 	font-size: 2em;
 	line-height: 1;
 	margin-bottom: 0;
-	font-family: "Microsoft YaHei","宋体","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif, FreeSans, Arimo;
 }
 .htmleaf-header h1 span {
-	font-family: "Microsoft YaHei","宋体","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif, FreeSans, Arimo;
 	display: block;
 	font-size: 60%;
 	font-weight: 400;
