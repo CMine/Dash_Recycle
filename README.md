@@ -1,4 +1,10 @@
-# Dash_Recycle
+# Green Route
+
+This project was original entitled *Dash Recycle*, but has since be renamed to **Green Route**. To maintain data stewardship we have opted not to rename the repository and instead provide this notification.
+
+## Product Narrative
+
+Green Route is a new on-demand P2P delivery model that empowers small/medium sized business to deploy a small sustainable network of flexible couriers to deliver packages in reusable totes and later pick up those totes at the customers convenience. All with the press of a button.
 
 ## The Dash Button
 
