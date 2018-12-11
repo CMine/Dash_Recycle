@@ -30,3 +30,28 @@ Next in the process is merging this new geometry attribute with the collection o
 
 #### Why AWS Lambda 
 AWS Lambda is a Amazon service that lets users run code without needing to spend time provisioning or managing servers. This was important to use because we wanted to make sure that the product we built was only costing the business when it was in use. Additionally, we needed the system to scale automatically at a moments notice, because the business might go from having a few pickup requests a day to thousands per second. 
+
+## Mathematical Model
+A mathematical model had to be build to model the Vehicle Routing Problem using the Clarke and Wright Savings Algorithm as described [here](http://web.mit.edu/urban_or_book/www/book/chapter6/6.4.12.html). The Vehicle Routing Problem in our problem is modelled such that it takes into account of constraints such as the customer preference for pick-up, the customer locality, maximum load of each vehicle and the number  of vehicles available for routing. The final file containing the key functions used are in the ipynotebook titled [Final Vehicle Routing Problem](https://github.com/CMine/Dash_Recycle/blob/master/Math_Model/Final_Vehicle%20Routing%20Problem.ipynb). Below are some key functions that the python script uses to solve the routing problem
+
+### Getting the Points from AWS
+Pulling from the S3 bucket, we are able to obtain the geolocation data and customer preference that is stored when a Dash Button is pressed.
+
+### Getting the Distances
+Routing over a route network is different from routing over an unconstrained 2 dimensional space. As such, we utilize the [Open Source Routing Machine](http://router.project-osrm.org) to request for a duration matrix for all the points of interest. This returns the shortest times, and in turn distance, between each of the location retrieved from the S3 bucket.
+
+### Clarke Wright Algorithm
+With the distance matrix the Clarke Wright Algorithm is able to calculate the Savings Matrix, where each entry $s_{ij}$ represent the savings of joining point i to point j versus the sum of going from the origin to point i and back and origin to point j and back as described by the following equation.
+$$s(i,j) = d(o,i) + d(o,j) - d(i,j)$$
+The larger the savings, the more inclined this algorithm is likely to want to place these points together to reduce the distance travelled. As such the algorithm goes down the savings in descending order and appends this i-j link on the routes if the following conditions are met:  
+1. Constraints are not violated, i.e. maximum load, customer preferences are not violated  
+2. Neither i or j are already in routes, in which case a new route is created  
+3. Either i or j are in routes but not in the interior of the routes, in which case the other point is included into the route  
+4. Both i and j are in seperate routes but not in the interior of the routes, in which both routes are joined at i-j  
+The algorithm continues until the algorithm has run through all points in the savings list (with positive savings).
+
+### Routing Details
+Next, routing details, such as directions and total distances travelled for the routes are extracted from [Open Source Routing Machine](http://router.project-osrm.org). This provides information on the increase in distance required to undertake the additional pick-ups of re-useable totes.
+
+### Environmental Details
+Finally, the distances, cardboard and reuseable totes are converted to carbon dioxide emissions to assess the environmental impact of the Green Route blueprint. The total carbon emission of the routes and the re-useable totes are compared to the status quo of just covering shorter distances but incurring repeated carbon costs from manufacturing cardboard boxes to obtain the yearly carbon savings and its equivalent number of trees, in terms of trees required to sequester the carbon saved. 
