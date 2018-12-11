@@ -1,0 +1,63 @@
+from __future__ import print_function
+
+import boto3
+import json
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+ses = boto3.client('ses')
+email_address = 'cim63@cornell.edu'  # change it to your email address
+
+def get_marker_color(clickType):
+    color_mapping = {
+        "SINGLE": "#8867ff",
+        "DOUBLE": "#69f1eb",
+        "LONG": "#efbd50"
+    }
+    return color_mapping[clickType]
+
+def mergeJson(content, data_to_add):
+    data = json.loads(content)
+    features = data['features']
+    for feature in features:
+        if (feature['geometry'] == data_to_add['geometry']):
+            data['features'].remove(feature)
+    data['features'].append(data_to_add)
+    return data
+
+def lambda_handler(event, context):
+    logging.info('Received event: ' + json.dumps(event))
+    
+    # Prepare clients
+    sns = boto3.client("sns")
+    s3 = boto3.client("s3")
+    
+    # Use geographic location to create a geoJSON object
+    clickType = event["clickType"]
+    clientName = "TESTING TESTING"
+    data_to_add = {'geometry': 
+                    {'coordinates': [-73.9856277, 40.74681836], 'type': 'Point'}, 
+                    'type': 'Feature', 
+                    'properties': 
+                        {'marker-symbol': 'waste-basket', 
+                        'marker-color': get_marker_color(clickType), 
+                        'name': clientName, 
+                        'line': 'blue'}}
+    
+    # Read geojson file
+    data = s3.get_object(Bucket='dashrecyclegeojson', Key='pickups.geojson')
+    data_contents = data['Body'].read()
+    updated_contents = mergeJson(data_contents, data_to_add)
+    
+    # Update the s3 bucket with new file contents
+    s3.put_object(Body=json.dumps(updated_contents), Bucket="dashrecyclegeojson", Key="pickups.geojson")
+
+    # Notify user of pickup preferences
+    subject = 'Hello from your IoT button %s' % event['serialNumber']
+    message = "As per your request, pickup set for" + str(clickType) +" color " + get_marker_color(clickType)
+    ses.send_email(Source=email_address,
+                   Destination={'ToAddresses': [email_address]},
+                  Message={'Subject': {'Data': subject}, 'Body': {'Text': {'Data': message}}})
+    logger.info('Email has been sent')
