@@ -41,8 +41,8 @@ Pulling from the S3 bucket, we are able to obtain the geolocation data and custo
 Routing over a route network is different from routing over an unconstrained 2 dimensional space. As such, we utilize the [Open Source Routing Machine](http://router.project-osrm.org) to request for a duration matrix for all the points of interest. This returns the shortest times, and in turn distance, between each of the location retrieved from the S3 bucket.
 
 ### Clarke Wright Algorithm
-With the distance matrix the Clarke Wright Algorithm is able to calculate the Savings Matrix, where each entry $s_{ij}$ represent the savings of joining point i to point j versus the sum of going from the origin to point i and back and origin to point j and back as described by the following equation.
-$$s(i,j) = d(o,i) + d(o,j) - d(i,j)$$
+With the distance matrix the Clarke Wright Algorithm is able to calculate the Savings Matrix, where each entry <img src="https://latex.codecogs.com/gif.latex?s_{ij}" title="s_{ij}" /> represent the savings of joining point i to point j versus the sum of going from the origin to point i and back and origin to point j and back as described by the following equation.  
+$$s(i,j) = d(o,i) + d(o,j) - d(i,j)$$  
 The larger the savings, the more inclined this algorithm is likely to want to place these points together to reduce the distance travelled. As such the algorithm goes down the savings in descending order and appends this i-j link on the routes if the following conditions are met:  
 1. Constraints are not violated, i.e. maximum load, customer preferences are not violated  
 2. Neither i or j are already in routes, in which case a new route is created  
