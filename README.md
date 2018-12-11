@@ -42,7 +42,7 @@ Routing over a route network is different from routing over an unconstrained 2 d
 
 ### Clarke Wright Algorithm
 With the distance matrix the Clarke Wright Algorithm is able to calculate the Savings Matrix, where each entry s(i,j) represent the savings of joining point i to point j versus the sum of going from the origin to point i and back and origin to point j and back as described by the following equation.  
-<img src="https://latex.codecogs.com/gif.latex?$$s(i,j)&space;=&space;d(o,i)&space;&plus;&space;d(o,j)&space;-&space;d(i,j)$$" title="$$s(i,j) = d(o,i) + d(o,j) - d(i,j)$$" />
+<img src="https://latex.codecogs.com/gif.latex?$$s(i,j)&space;=&space;d(o,i)&space;&plus;&space;d(o,j)&space;-&space;d(i,j)$$" title="$$s(i,j) = d(o,i) + d(o,j) - d(i,j)$$" />  
 The larger the savings, the more inclined this algorithm is likely to want to place these points together to reduce the distance travelled. As such the algorithm goes down the savings in descending order and appends this i-j link on the routes if the following conditions are met:  
 1. Constraints are not violated, i.e. maximum load, customer preferences are not violated  
 2. Neither i or j are already in routes, in which case a new route is created  
