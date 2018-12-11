@@ -28,7 +28,7 @@ def dash_points(URL):
         elif feature['properties']['marker-color'] == "#69f1eb": #blue/evening pick-ups
             co_ords.append((feature['geometry']['coordinates'],-1))
         else: #yellow/pick-ups
-            co_ords.append((feature['geometry']['coordinates'], 0)) 
+            co_ords.append((feature['geometry']['coordinates'], 0))
     return co_ords
 
 def flex_points(URL):
@@ -48,7 +48,7 @@ def duration_matrix(co_ords):
     for points in co_ords:
         URL += str(points[0][0]) + "," + str(points[0][1]) + ";"
     URL = URL[:-1]
-    r = requests.get(url = URL) 
+    r = requests.get(url = URL)
     data = r.json()
     duration = data['durations']
     #average out to and fro time from duration matrix
@@ -97,7 +97,7 @@ def clarkWright(savings, co_ords, loads, capacity):
     for i in range(1,len(savings)):
         if len(points) == 0:
             break
-        point1 = savings[i][0] 
+        point1 = savings[i][0]
         point2 = savings[i][1]
         if (point1 in points) and (point2 in points):
             route = [0,point1,point2,0]
@@ -194,8 +194,8 @@ def distanceFromRoutes(routes, co_ords):
         for i in range(1, len(routes[key][0])):
             URL += str(co_ords[routes[key][0][i-1]][0][0]) + "," + str(co_ords[routes[key][0][i]][0][1]) + ";"
         URL = URL[:-1]
-        r = requests.get(url = URL) 
-        data = r.json() 
+        r = requests.get(url = URL)
+        data = r.json()
         distance += data['routes'][0]["distance"]
     return distance
 
@@ -216,8 +216,8 @@ def routeToWayPoint(routes):
         for points in routes[key][0]:
             URL += str(points[0]) + "," + str(points[1]) + ";"
         URL = URL[:-1] + "?geometries=geojson&steps=false"
-        r = requests.get(url = URL) 
-        data = r.json() 
+        r = requests.get(url = URL)
+        data = r.json()
         routes[key][0] = data['routes'][0]['geometry']['coordinates']
     return routes
 
@@ -233,20 +233,22 @@ def wayPointGeoJson(routes):
     return output
 
 if __name__ == "__main__":
+    print("Algorithm is starting")
     co_ords = dash_points("https://s3.amazonaws.com/dashrecyclegeojson/pickups.geojson")
     d_matrix = duration_matrix(co_ords)
     loads = load_list(co_ords,0,4)
     savings = saving_list(d_matrix)
     routes = clarkWright(savings, co_ords, loads, 25)
+    print("Calculating the distance matrix")
     distance = distanceFromRoutes(routes, co_ords)
     routes = routeCoords(routes, co_ords)
     routes = routeToWayPoint(routes)
-    
+    print("Preparing to write to the S3 bucket")
     AWS_ACCESS_KEY_ID = 'AKIAIOJANDUTPP2YZ5PA'
     AWS_SECRET_ACCESS_KEY = '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'
-    
+
     bucket_name = "dashrecyclegeojson"
     updated_filename = "routes.geojson"
     s3 = boto3.client("s3", aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     s3.put_object(Body=json.dumps(wayPointGeoJson(routes)), Bucket="dashrecyclegeojson", Key=updated_filename, ACL='public-read')
-    
+    print("Write to S3 bucket is complete")

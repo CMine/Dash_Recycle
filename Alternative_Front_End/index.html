@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Green Route</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- leaflet
+    ================================================== -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+
+    <!-- mapbox
+    ================================================== -->
+    <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+
+    <!-- bootstrap
+    ================================================== -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/1.2.0/json2html.min.js"></script>
+
+
+
+</head>
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="index.html">
+                <img src="images/green_logo_white.png" alt="Homepage">
+            </a>
+        </div> <!-- end header-logo -->
+
+        <nav class="header-nav">
+
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+            <div class="header-nav__content">
+                <h3>Green Route</h3>
+
+                <ul class="header-nav__list">
+                    <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
+                    <li><a class="smoothscroll"  href="#about" title="about">About Us</a></li>
+                    <li><a class="smoothscroll"  href="#routes" title="routes">Assign Routes</a></li>
+                    <li><a class="smoothscroll"  href="#stats" title="emissions">Monitor Emissions</a></li>
+                    <!--
+                    <li><a class="smoothscroll"  href="#works" title="works">Works</a></li>
+                    <li><a class="smoothscroll"  href="#contact" title="contact">Contact</a></li>
+                  -->
+                </ul>
+
+                <p>Use this portal to monitor and construct your P2P delivery service(s) in real time. </p>
+
+            </div> <!-- end header-nav__content -->
+
+        </nav> <!-- end header-nav -->
+
+        <a class="header-menu-toggle" href="#0">
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header> <!-- end s-header -->
+
+
+    <!-- home
+    ================================================== -->
+    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/car.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=top>
+
+        <div class="shadow-overlay"></div>
+
+        <div class="home-content">
+
+            <div class="row home-content__main">
+                <h1>
+                Welcome to <br>
+                Green Route.
+                </h1>
+
+                <p>
+                P2P delivery done environmentally, <br>
+                so your business can stand out to fit in.
+                </p>
+            </div> <!-- end home-content__main -->
+
+        </div> <!-- end home-content -->
+
+        <ul class="home-sidelinks">
+            <li><a class="smoothscroll" href="#about">About<span>what we do</span></a></li>
+            <li><a class="smoothscroll" href="#routes">Routes<span>assign routes</span></a></li>
+            <li><a  class="smoothscroll" href="#contact">Carbon Emissions<span>monitor emissions</span></a></li>
+        </ul> <!-- end home-sidelinks -->
+
+        <a href="#about" class="home-scroll smoothscroll">
+            <span class="home-scroll__text">Scroll Down</span>
+            <span class="home-scroll__icon"></span>
+        </a> <!-- end home-scroll -->
+
+    </section> <!-- end s-home -->
+
+
+    <!-- about
+    ================================================== -->
+    <section id='about' class="s-about">
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Who We Are</h3>
+                <h1 class="display-1">We are a group of design driven individuals passionate about creating beautiful UI designs.</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row" data-aos="fade-up">
+            <div class="col-full">
+                <p class="lead">
+                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+                </p>
+            </div>
+        </div> <!-- end about-desc -->
+
+        <div class="row">
+
+            <div class="about-process process block-1-2 block-tab-full">
+
+                <div class="process__vline-left"></div>
+                <div class="process__vline-right"></div>
+
+                <div class="col-block process__col" data-item="1" data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>Define</h4>
+
+                        <p>
+                        Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae.
+                        Numquam debitis pariatur omnis facere unde. Laboriosam minus amet nesciunt est. Et saepe eos maxime tempore quasi deserunt ab.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block process__col" data-item="2" data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>Design</h4>
+
+                        <p>
+                        Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae.
+                        Numquam debitis pariatur omnis facere unde. Laboriosam minus amet nesciunt est. Et saepe eos maxime tempore quasi deserunt ab.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block process__col" data-item="3" data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>Build</h4>
+
+                        <p>
+                        Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae.
+                        Numquam debitis pariatur omnis facere unde. Laboriosam minus amet nesciunt est. Et saepe eos maxime tempore quasi deserunt ab.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block process__col" data-item="4" data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>Launch</h4>
+
+                        <p>
+                        Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae.
+                        Numquam debitis pariatur omnis facere unde. Laboriosam minus amet nesciunt est. Et saepe eos maxime tempore quasi deserunt ab.
+                        </p>
+                    </div>
+                </div>
+
+            </div> <!-- end process -->
+
+        </div> <!-- end about-stats -->
+
+    </section> <!-- end s-about -->
+
+
+    <!-- services
+    ================================================== -->
+    <section id='routes' class="s-works">
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full ">
+                <h3 class="subhead">Assign Routes</h3>
+                <h1 class="display-1"> Real time view of your clients.</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row" data-aos="fade-up">
+            <div class="col-full">
+              <div id="map"></div>
+                <script>
+                    L.mapbox.accessToken = 'pk.eyJ1IjoibWluZWMiLCJhIjoiY2pvazcxZHA5MDMzcjNwbzRjN3p2cm1jZyJ9.5Xa-QJPOak94e47lyMHJQw';
+
+                    var map = L.mapbox.map('map', 'mapbox.light')
+                        .setView([40.7605, -73.9510], 13);
+
+                    var featureLayer = L.mapbox.featureLayer()
+                      .loadURL('https://cors.io/?https://raw.githubusercontent.com/CMine/Dash_Recycle/master/GeoJson/pickups.geojson')
+                      .addTo(map);
+
+
+                    function runScript(){
+                        $.ajax({
+                            type:"GET",
+                            url:"test.py",
+                            success: renderMap
+                        });
+                    };
+
+                     function renderMap() {
+                        var routeLayer = L.mapbox.featureLayer()
+                            .loadURL('https://cors.io/?https://raw.githubusercontent.com/CMine/Dash_Recycle/master/GeoJson/routes.geojson')
+                            .addTo(map);
+                    }        
+                </script>
+            </div>
+            <div align="right">
+                <br>
+                <a class="btn btn--primary" onclick="renderMap()">View Routes</a>
+            </div>
+        </div> <!-- end client map -->
+
+<!-- HERE I AM HERE I AM HERE I AM  -->
+<div class="testimonials-wrap" data-aos="fade-up">
+    <div class="row">
+        <div class="col-full testimonials-header">
+            <h2 class="h1">Your Drivers</h2>
+        </div>
+    </div>
+
+    <div class="row testimonials">
+        <script>
+            function unhideDiv(id) {
+                    document.getElementById(id).style.display = "block";
+            };
+
+            function getTableJson(){
+                $.ajax({
+                    url: "https://raw.githubusercontent.com/CMine/Dash_Recycle/master/route_details.json",
+                    type:"get",
+                    dataType: 'json',  
+                    error: function(data){
+                            //debugger;
+                            alert('err');
+                    },
+                    success:function(data) {
+
+                        var transform = {"tag":"table", "children":[
+                            {"tag":"tbody","children":[
+                                {"tag":"tr","children":[
+                                    {"tag":"td","html":"${distance}"},
+                                    {"tag":"td","html":"${load}"},
+                                    {"tag":"td","html":"${emissions}"},
+                                    {"tag":"td","html":"${label}"},
+                                    {"tag":"td","html":"<input type='checkbox'>"}
+                                ]}
+                            ]}
+                        ]};
+                        $('#target_div').html(json2html.transform(data,transform));
+                    }
+                });
+
+            }
+        </script>
+
+        <div class="col-full testimonials__slider">
+            <div class="testimonials__slide">
+                <img src="images/avatars/user-01.jpg" alt="Author image" class="testimonials__avatar">
+                <div class="testimonials__author">
+                    Daniel  Carlson
+                    <span>Driver, Red Fern Bewing Co</span>
+                </div>
+                <p>Total Miles Driven: <b>100</b></p>
+                <p>Total Deliveries Made: <b>10</b></p>
+                <a data-toggle="modal" href="#myModal" class="btn btn--stroke" onclick="getTableJson()">Assign A Route</a>
+
+            </div> <!-- end testimonials__slide -->
+
+            <div class="testimonials__slide">
+                <img src="images/avatars/user-05.jpg" alt="Author image" class="testimonials__avatar">
+                <div class="testimonials__author">
+                    Kelvin  Williams
+                    <span>CEO, Microsoft</span>
+                </div>
+              <p>Total Miles Driven: <b>200</b> </p> 
+              <p>Total Deliveries Made: <b>20</b></p> 
+              <a class="btn btn--stroke" href="#0">Assign A Route</a>
+            </div> <!-- end testimonials__slide -->
+
+            <div class="testimonials__slide">
+                <img src="images/avatars/user-02.jpg" alt="Author image" class="testimonials__avatar">
+                <div class="testimonials__author">
+                    Darren  Reed
+                    <span>CEO, Microsoft</span>
+                </div>
+                <p>Total Miles Driven: <b>100</b></p>
+                <p>Total Deliveries Made: <b>10</b></p>
+              <a class="btn btn--stroke" href="#0">Assign A Route</a>
+            </div> <!-- end testimonials__slide -->
+
+        </div> <!-- end testimonials__slider -->
+                      <!-- Modal -->
+                <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style='display: none;' id='divid'>
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  </div>
+                  <div class="modal-body">
+                         <div class="table-responsive">
+                                    <table>
+                                            <thead>
+                                            <tr>
+                                                <th>Distance</th>
+                                                <th>Load</th>
+                                                <th>Emissions</th>
+                                                <th>Label</th>
+                                                <th>Assign</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody id='target_div'>
+                                           
+                                            </tbody>
+                                    </table>
+
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <a data-toggle="modal" href="#success" class="btn btn--primary" >Save changes</a>
+                    <div  id="success" class="alert-box alert-box--success hideit" style='display: none;'>
+                        <p>You have successfully assigned a route.</p>
+                        <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
+                    </div><!-- /success -->
+
+                  </div>
+                </div>
+
+    </div> <!-- end testimonials -->
+
+</div> <!-- end testimonials-wrap -->
+
+    </section> <!-- end s-services -->
+
+
+    <!-- stats
+    ================================================== -->
+    <section id="stats" class="s-stats">
+
+        <div class="row stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">
+
+            <div class="col-block stats__col ">
+                <div class="stats__count">380</div>
+                <h5>Trees Saved</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">8289156</div>
+                <h5>Annual Carbon Saved</h5>
+            </div>
+
+        </div> <!-- end stats -->
+
+    </section> <!-- end s-stats -->
+
+
+    <!-- contact
+    ================================================== -->
+    <section id="contact" class="s-contact">
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead subhead--light">Contact Us</h3>
+                <h1 class="display-1 display-1--light">Get in touch and let's make something great together. Let's turn your idea on an even greater product.</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row">
+            <div class="col-full cl-copyright">
+                <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+            </div>
+        </div>
+
+        <div class="cl-go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+        </div>
+
+    </section> <!-- end s-contact -->
+
+
+    <!-- photoswipe background
+    ================================================== -->
+    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title=
+                    "Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title=
+                    "Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title=
+                "Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div> <!-- end photoSwipe background -->
+
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
